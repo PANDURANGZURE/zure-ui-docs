@@ -60,6 +60,7 @@ const sidebarData = {
     {
       title: "Components",
       icon: Component,
+      isActive: true,
       items: [
         { title: "Buttons", url: "/docs/components/button" },
         { title: "Inputs", url: "/docs/components/input" },
@@ -155,7 +156,7 @@ export function AppSidebar(props) {
       {/* ---------- FOOTER ---------- */}
       <SidebarFooter className="border-t border-zinc-800 bg-black p-2">
         <DropdownMenu className="">
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger  asChild>
             <button className="flex w-full items-center gap-3 rounded-md px-3 py-2 hover:bg-zinc-900 hover:text-white">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="https://pandurang-2k25.netlify.app/assets/pfp-_lj6DcG3.png" />
