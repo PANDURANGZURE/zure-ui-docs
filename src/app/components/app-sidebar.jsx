@@ -11,7 +11,9 @@ import {
   Settings,
   Github,
   Linkedin,
-  GitPullRequestCreate
+  GitPullRequestCreate,
+  Contact,
+  Scale
 } from "lucide-react"
 
 import {
@@ -147,7 +149,7 @@ export function AppSidebar(props) {
           <DropdownMenuTrigger asChild>
             <button className="flex w-full items-center gap-3 rounded-md px-3 py-2 hover:bg-zinc-900 hover:text-white">
               <Avatar className="h-8 w-8">
-                <AvatarImage src="/avatar.png" />
+                <AvatarImage src="https://pandurang-2k25.netlify.app/assets/pfp-_lj6DcG3.png" />
                 <AvatarFallback>PZ</AvatarFallback>
               </Avatar>
 
@@ -165,15 +167,42 @@ export function AppSidebar(props) {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent side="top" align="center"  className="w-56 bg-black text-white">
-            <DropdownMenuItem>
+            <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-0">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="https://pandurang-2k25.netlify.app/assets/pfp-_lj6DcG3.png" />
+                <AvatarFallback>PZ</AvatarFallback>
+              </Avatar>
+
+              <div className="flex flex-1 flex-col text-left">
+                <span className="text-sm font-medium text-white">
+                  Pandurang Zure
+                </span>
+                <span className="text-xs text-zinc-500">
+                  Frontend Devloper
+                </span>
+              </div>
+            </DropdownMenuItem>
+             <div className="border-t border-gray-200 my-2"></div>
+             <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-1 ">
               <GitPullRequestCreate className="mr-2  text-white h-4 w-4" />
               Contribute
             </DropdownMenuItem>
-            <DropdownMenuItem>
+          
+            <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-1">
+              <Contact className="mr-2  text-white h-4 w-4" />
+              Contact
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-1">
+              <Scale className="mr-2  text-white h-4 w-4" />
+              License
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-1">
               <Linkedin className="mr-2 text-white h-4 w-4" />
               Linkedin
             </DropdownMenuItem>
-            <DropdownMenuItem className="">
+            <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-1">
               <Github className="mr-2 text-white group-hover:text-black  h-4 w-4" />
               Github
             </DropdownMenuItem>
