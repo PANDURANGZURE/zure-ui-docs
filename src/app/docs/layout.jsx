@@ -9,7 +9,7 @@ export default function DocsLayout({ children }) {
 
         <main className="flex-1 bg-black">
           <header className="flex h-16 items-center gap-2 border-b border-zinc-800 px-4">
-            <SidebarTrigger className="text-zinc-400 hover:text-white" />
+            <SidebarTrigger className="text-zinc-400 hover:text-white md:hidden block" />
             <span className="text-sm text-zinc-400">Docs</span>
           </header>
 

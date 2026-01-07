@@ -63,6 +63,15 @@ const sidebarData = {
       items: [
         { title: "Buttons", url: "/docs/components/button" },
         { title: "Inputs", url: "/docs/components/input" },
+        { title: "Navbar", url: "/docs/components/Navbar" },
+        { title: "Textarea", url: "/docs/components/Textarea" },
+        { title: "Select", url: "/docs/components/Select" },
+        { title: "Checkbox", url: "/docs/components/Checkbox" },
+        { title: "Alert", url: "/docs/components/Alert" },
+        { title: "Skeletons", url: "/docs/components/Skeletons" },
+        { title: "Loader", url: "/docs/components/Loader" },
+        { title: "Checkbox", url: "/docs/components/Checkbox" },
+
       ],
     },
   ],
@@ -185,7 +194,7 @@ export function AppSidebar(props) {
              <div className="border-t border-gray-200 my-2"></div>
              <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-1 ">
               <GitPullRequestCreate className="mr-2  text-white h-4 w-4" />
-              Contribute
+              Want to Contribute??
             </DropdownMenuItem>
           
             <DropdownMenuItem className="focus:bg-transparent focus:text-white focus:border-1">
