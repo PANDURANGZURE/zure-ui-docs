@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { Terminal, Component, FileText, Search } from "lucide-react"
+import { Terminal, Component, FileText, Search, Layout, Type, SquareCheck, MousePointer2 } from "lucide-react"
 
 import {
   CommandDialog,
@@ -13,6 +13,27 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command"
+
+// 1. Define your searchable items here
+const SEARCH_ITEMS = [
+  {
+    group: "Getting Started",
+    items: [
+      { title: "Installation", url: "/docs/installation", icon: Terminal },
+      { title: "Project Structure", url: "/docs/structure", icon: FileText },
+    ],
+  },
+  {
+    group: "Components",
+    items: [
+      { title: "Button", url: "/docs/components/button", icon: MousePointer2 },
+      { title: "Input", url: "/docs/components/input", icon: Type },
+      { title: "Navbar", url: "/docs/components/Navbar", icon: Layout },
+      { title: "Checkbox", url: "/docs/components/Checkbox", icon: SquareCheck },
+      // Add more here... it will auto-render!
+    ],
+  },
+]
 
 export function SearchCommand() {
   const [open, setOpen] = React.useState(false)
@@ -36,7 +57,6 @@ export function SearchCommand() {
 
   return (
     <>
-      {/* Trigger Button - Color Corrected for Header/Sidebar */}
       <button
         onClick={() => setOpen(true)}
         className="group flex w-full items-center gap-2 rounded-md border border-zinc-800 bg-black px-3 py-1.5 text-sm text-zinc-500 transition-all hover:bg-zinc-900 hover:text-zinc-300"
@@ -48,7 +68,6 @@ export function SearchCommand() {
         </kbd>
       </button>
 
-      {/* Dialog Colors - Deep Black and Sharp Zinc borders */}
       <CommandDialog 
         open={open} 
         onOpenChange={setOpen}
@@ -56,46 +75,32 @@ export function SearchCommand() {
       >
         <CommandInput 
           placeholder="Type to search..." 
-          className="border-none text-black placeholder:text-zinc-600 focus:ring-0"
+          className="border-none text-zinc-100 placeholder:text-zinc-600 focus:ring-0"
         />
-        <CommandList className="border-t border-zinc-800 bg-black scrollbar-thin scrollbar-thumb-zinc-800">
+        <CommandList className="border-t border-zinc-800 bg-black scrollbar-thin scrollbar-thumb-black">
           <CommandEmpty className="py-6 text-zinc-500">No results found.</CommandEmpty>
           
-          <CommandGroup heading="Getting Started" className="text-zinc-500 [&_[cmdk-group-heading]]:text-zinc-500">
-            <CommandItem 
-              onSelect={() => onSelectAction("/docs/installation")}
-              className="data-[selected=true]:bg-zinc-900 data-[selected=true]:text-white cursor-pointer"
-            >
-              <Terminal className="mr-2 size-4 text-zinc-400" />
-              <span>Installation</span>
-            </CommandItem>
-            <CommandItem 
-              onSelect={() => onSelectAction("/docs/structure")}
-              className="data-[selected=true]:bg-zinc-900 data-[selected=true]:text-white cursor-pointer"
-            >
-              <FileText className="mr-2 size-4 text-zinc-400" />
-              <span>Project Structure</span>
-            </CommandItem>
-          </CommandGroup>
-
-          <CommandSeparator className="bg-zinc-800" />
-
-          <CommandGroup heading="Components" className="text-zinc-500 [&_[cmdk-group-heading]]:text-zinc-500">
-            <CommandItem 
-              onSelect={() => onSelectAction("/docs/components/button")}
-              className="data-[selected=true]:bg-zinc-900 data-[selected=true]:text-white cursor-pointer"
-            >
-              <Component className="mr-2 size-4 text-zinc-400" />
-              <span>Button</span>
-            </CommandItem>
-            <CommandItem 
-              onSelect={() => onSelectAction("/docs/components/input")}
-              className="data-[selected=true]:bg-zinc-900 data-[selected=true]:text-white cursor-pointer"
-            >
-              <Component className="mr-2 size-4 text-zinc-400" />
-              <span>Input</span>
-            </CommandItem>
-          </CommandGroup>
+          {SEARCH_ITEMS.map((section, index) => (
+            <React.Fragment key={section.group}>
+              <CommandGroup 
+                heading={section.group} 
+                className="text-zinc-500 [&_[cmdk-group-heading]]:text-zinc-500"
+              >
+                {section.items.map((item) => (
+                  <CommandItem 
+                    key={item.url}
+                    onSelect={() => onSelectAction(item.url)}
+                    className="data-[selected=true]:bg-zinc-900 data-[selected=true]:text-white cursor-pointer"
+                  >
+                    <item.icon className="mr-2 size-4 text-zinc-400" />
+                    <span>{item.title}</span>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+              {/* Only add a separator if it's not the last group */}
+              {index < SEARCH_ITEMS.length - 1 && <CommandSeparator className="bg-zinc-800" />}
+            </React.Fragment>
+          ))}
         </CommandList>
       </CommandDialog>
     </>
