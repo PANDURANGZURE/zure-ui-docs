@@ -1,6 +1,8 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarContent, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "../components/app-sidebar"
 import { SearchCommand } from "../components/SearchCommand" // Import your search component
+import Toc from "../components/Toc"
+import { DocsTocSidebar } from "../components/docs-toc-sidebar"
 
 export default function DocsLayout({ children }) {
   return (
@@ -31,7 +33,11 @@ export default function DocsLayout({ children }) {
           <div className="flex-1 p-8">
             {children}
           </div>
+          <SidebarContent>
+            <DocsTocSidebar/>
+          </SidebarContent>
         </main>
+        
       </div>
     </SidebarProvider>
   )
