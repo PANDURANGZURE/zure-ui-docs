@@ -1,12 +1,10 @@
-import nextMDX from "@next/mdx";
+import  nextra  from "nextra"
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  pageExtensions: ["js", "jsx", "mdx"],
-};
+const nextConfig = {};
 
-const withMDX = nextMDX({
-  extension: /\.mdx?$/,
-});
+const withNextra = nextra({
+  defaultShowCopyCode: true,
+})
 
-export default withMDX(nextConfig);
+export default withNextra(nextConfig);
