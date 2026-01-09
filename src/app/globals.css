@@ -1,7 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
+
+
 
 @theme inline {
   --color-background: var(--background);
@@ -149,3 +152,6 @@
     scrollbar-color: #27272a transparent;
   }
 }
+
+
+

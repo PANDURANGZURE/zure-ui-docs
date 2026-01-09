@@ -35,7 +35,7 @@ export default function Toc() {
   }, []);
 
   return (
-    <ul className="space-y-0.5 text-[11px] leading-4">
+    <ul className="space-y-0.5 hidden md:block text-[11px] leading-4">
       {headings.map((h) => (
         <li
           key={h.id}
